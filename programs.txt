@@ -1,0 +1,122 @@
+// digits in a number
+
+const n = 1235437;
+let k = n;
+let digits = 0;
+
+while(k > 0) {
+    k = parseInt(k/10);
+    ++digits;
+}
+
+console.log(`Number of digits in ${n} is `, digits);
+
+// factorial of a number
+
+let n = 3;
+let fact = 1;
+
+while (n > 0) {
+    fact = fact * n;
+    n--;
+}
+
+console.log('Factorial is ',fact);
+
+// Sum of all digits in a number
+
+let n = 542;
+let sum = 0;
+
+while (n > 0) {
+    let r = n%10;
+    sum = sum + r;
+    n = parseInt(n/10);
+}
+
+console.log('Sum is ',sum);
+
+// Trailing zeros in a number
+
+let n = 5432003000;
+let trailingZeros = 0;
+
+while (n%10 == 0) {
+   ++trailingZeros;
+   n = parseInt(n/10)
+}
+
+console.log(trailingZeros);
+
+// Trailing zeros in factorial of a number
+
+let n = 10;
+let ans = 0;
+
+for (let i=5; i<=n; i=i*5) {
+    ans += parseInt(n/i);
+}
+
+console.log(ans);
+
+// GCD or HCF using ecludian algorithm
+
+let a = 21;
+let b = 9;
+
+while (a != 0 && b != 0) {
+  if (a > b) {
+    a = a%b;
+  } else {
+    b = b%a;
+  }
+}
+
+// factors of a number
+
+let n = 20;
+let factors = [];
+
+for (let i=1; i*i<=n; i++) {
+    if (n%i == 0) {
+        factors.push(i, n/i);
+    }
+}
+
+console.log(factors);
+
+// palindrom of a string
+
+let str = 'racecar';
+let palindrom = true;
+
+
+for (let i = 0, j=6; i<j; i++, j--) {
+    if (str[i] != str[j]) {
+        palindrom = false;
+    }
+}
+
+console.log(palindrom);
+
+// reverse of a number
+
+let n = 573;
+let number = 0;
+
+while (n > 0) {
+  let r = n%10;
+  n = parseInt(n/10);
+  number = number * 10 + r;
+}
+
+// sum of numbers in a array to find sum between two indexes
+let arr = [5, 7, 1, 8, 3, 2];
+
+let newArr = [arr[0]];
+
+for (let i=1; i<=arr.length-1; i++) {
+    newArr.push(newArr[i-1]+arr[i]);
+}
+
+console.log(newArr);
