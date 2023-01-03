@@ -72,6 +72,8 @@ while (a != 0 && b != 0) {
   }
 }
 
+console.log(a, b);
+
 // factors of a number
 
 let n = 20;
@@ -110,7 +112,9 @@ while (n > 0) {
   number = number * 10 + r;
 }
 
-// sum of numbers in a array to find sum between two indexes
+console.log(number);
+
+// running sum of array
 let arr = [5, 7, 1, 8, 3, 2];
 
 let newArr = [arr[0]];
@@ -120,3 +124,122 @@ for (let i=1; i<=arr.length-1; i++) {
 }
 
 console.log(newArr);
+
+// sum of numbers in a array to find sum between two indexes
+let arr = [5, 7, 1, 8, 3, 2];
+
+let newArr = [arr[0]];
+let index1 = 2;
+let index2 = 4;
+
+for (let i=1; i<=arr.length-1; i++) {
+    newArr.push(newArr[i-1]+arr[i]);
+}
+
+console.log(`Sum between index ${index1} and ${index2} is:`, newArr[index2]-newArr[index1-1]);
+
+// sum of all windows of size 3
+
+let arr = [5, 7, 1, 8, 3, 2];
+let n = arr.length;
+let k = 3;
+let winsum = [];
+
+for (i=0; i<=n-k; i++) {
+    let sum = 0;
+    for (j=i; j<i+k; j++) {
+        sum += arr[j];
+    }
+    winsum.push(sum);
+}
+
+console.log('sum of all windows of size 3 is ', winsum);
+console.log('time complexity is O(nk)');
+
+// sum of all windows of size 3 (Optimized)
+
+let arr = [5, 7, 1, 8, 3, 2];
+let n = arr.length;
+let k = 3;
+let winsum = [];
+let firstWinSum = 0;
+
+
+for (let i = 0; i<k; i++) {
+    firstWinSum += arr[i];
+}
+
+winsum[0] = firstWinSum;
+
+for (let i=1; i<n-k+1; i++) {
+    let sum = winsum[i-1] - arr[i-1] + arr[(i+k)-1];
+    winsum[i] = sum;
+}
+
+console.log('sum of all windows of size 3 is ', winsum);
+console.log('time complexity is O(n)');
+
+// max number in array
+
+const arr = [5, 2, 3, 6, 8, 4];
+let n = arr.length;
+let max = arr[0];
+
+for (let i=1; i<=n-1; i++) {
+    if (arr[i] > max) {
+        max = arr[i];
+    }
+}
+
+console.log(max);
+
+
+// max and second max from array
+
+const arr = [5, 2, -3, 6, 3, 8, 6];
+let max1 = arr[0];
+let max2 = arr[0];
+
+
+for (let i=1; i<arr.length; i++) {
+    if (arr[i] >= max1) {
+        max2 = max1;
+        max1 = arr[i];
+    } else if (arr[i] > max2) {
+        max2 = arr[i];
+    }
+}
+
+console.log(max1, max2);
+
+// count the frequency on numbers in a array
+
+let arr = [2, 1, 5, 6, 2, 3, 6, 5, 6, 1];
+let frequencies = [];
+
+for (let i=0; i<arr.length; i++) {
+    if (frequencies[arr[i]]) continue;
+    let frequency = 1;
+    for (let j=i+1; j<arr.length; j++) {
+        if (arr[j] == arr[i]) {
+            frequency++;
+        }
+    }
+
+    frequencies[arr[i]] = frequency;
+}
+
+console.log(frequencies);
+
+
+// count the frequency on numbers in a array (Optimized)
+
+let arr = [2, 1, 5, 6, 2, 3, 6, 5, 6, 1];
+let max = Math.max(...arr);
+let indexedArr = new Array(max+1).fill(0);
+
+for (let i=0; i<arr.length; i++) {
+    indexedArr[arr[i]] = ++indexedArr[arr[i]];
+}
+
+console.log(indexedArr);
